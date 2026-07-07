@@ -5,10 +5,10 @@ const card = document.querySelector(".card");
 const hearts = document.getElementById("hearts");
 
 const frases = [
-"😝 Casi...",
+"🥲 Casi...",
 "🤭 Jejeje",
 "🥹 Piénsalo",
-"💖 Mejor dale que sí",
+"🔫 Mejor dale que sí",
 "😂 No tan rápido"
 ];
 
@@ -81,7 +81,7 @@ setTimeout(()=>{
 
 const c=document.createElement("div");
 
-c.innerHTML="💖";
+c.innerHTML="💕""✨";
 
 c.style.position="fixed";
 c.style.left=Math.random()*100+"vw";
@@ -107,5 +107,24 @@ c.remove();
 },i*20);
 
 }
+const fotos = [
+    "img/Foto 1.JPG",
+    "img/Foto 2.JPG",
+    "img/Foto 3.JPG",
+    "img/Foto 4.jpg",
+    "img/Foto 5.jpg"
+];
 
+let indice = 0;
+
+function iniciarGaleria() {
+    const foto = document.getElementById("foto");
+
+    setInterval(() => {
+        indice = (indice + 1) % fotos.length;
+        foto.src = fotos[indice];
+    }, 3000);
+}
+
+iniciarGaleria();
 }
