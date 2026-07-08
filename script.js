@@ -5,7 +5,9 @@ const inicio = document.getElementById("inicio");
 const final = document.getElementById("final");
 const hearts = document.getElementById("hearts");
 
-// ===== BOTÓN NO =====
+// =====================
+// BOTÓN NO
+// =====================
 
 const mensajesNo = [
     "No 😐",
@@ -20,8 +22,10 @@ let intento = 0;
 
 function mover() {
 
-    const x = Math.random() * (window.innerWidth - no.offsetWidth - 20);
-    const y = Math.random() * (window.innerHeight - no.offsetHeight - 20);
+    const margen = 20;
+
+    const x = Math.random() * (window.innerWidth - no.offsetWidth - margen);
+    const y = Math.random() * (window.innerHeight - no.offsetHeight - margen);
 
     no.style.position = "fixed";
     no.style.left = x + "px";
@@ -39,19 +43,30 @@ no.addEventListener("touchstart", function (e) {
     mover();
 });
 
-// ===== BOTÓN SÍ =====
+// =====================
+// BOTÓN SÍ
+// =====================
 
 yes.addEventListener("click", () => {
 
-    inicio.style.display = "none";
+    inicio.style.transform = "scale(.9)";
+    inicio.style.opacity = "0";
 
-    final.classList.remove("hidden");
+    setTimeout(() => {
 
-    crearConfeti();
+        inicio.style.display = "none";
+
+        final.classList.remove("hidden");
+
+        crearConfeti();
+
+    }, 400);
 
 });
 
-// ===== GALERÍA =====
+// =====================
+// GALERÍA
+// =====================
 
 const fotos = [
     "img/Foto 1.JPG",
@@ -67,25 +82,27 @@ setInterval(() => {
 
     const foto = document.getElementById("foto");
 
-    if (foto && !final.classList.contains("hidden")) {
+    if (!foto || final.classList.contains("hidden")) return;
+
+    foto.style.opacity = "0";
+    foto.style.transform = "scale(.95)";
+
+    setTimeout(() => {
 
         indice = (indice + 1) % fotos.length;
 
-        foto.style.opacity = "0";
+        foto.src = fotos[indice];
 
-        setTimeout(() => {
+        foto.style.opacity = "1";
+        foto.style.transform = "scale(1)";
 
-            foto.src = fotos[indice];
-
-            foto.style.opacity = "1";
-
-        }, 250);
-
-    }
+    }, 250);
 
 }, 3000);
 
-// ===== CORAZONES Y DESTELLOS =====
+// =====================
+// CORAZONES
+// =====================
 
 function crearCorazon() {
 
@@ -93,7 +110,11 @@ function crearCorazon() {
 
     heart.className = "heart";
 
-    const figuras = ["❤️", "✨"];
+    const figuras = [
+        "❤️",
+        "✨",
+        "🌸"
+    ];
 
     heart.innerHTML =
         figuras[Math.floor(Math.random() * figuras.length)];
@@ -101,7 +122,7 @@ function crearCorazon() {
     heart.style.left = Math.random() * 100 + "vw";
 
     heart.style.fontSize =
-        (18 + Math.random() * 20) + "px";
+        (18 + Math.random() * 18) + "px";
 
     heart.style.animationDuration =
         (5 + Math.random() * 3) + "s";
@@ -116,9 +137,11 @@ function crearCorazon() {
 
 }
 
-setInterval(crearCorazon, 300);
+setInterval(crearCorazon, 350);
 
-// ===== CONFETI =====
+// =====================
+// CONFETI
+// =====================
 
 function crearConfeti() {
 
@@ -126,30 +149,46 @@ function crearConfeti() {
 
         setTimeout(() => {
 
-            const c = document.createElement("div");
+            const item = document.createElement("div");
 
-            c.innerHTML = Math.random() > 0.5 ? "❤️" : "✨";
+            const figuras = [
+                "❤️",
+                "✨",
+                "🌸",
+                "💕"
+            ];
 
-            c.style.position = "fixed";
-            c.style.left = Math.random() * 100 + "vw";
-            c.style.top = "-30px";
-            c.style.fontSize = (18 + Math.random() * 15) + "px";
-            c.style.transition = "transform 3s linear";
+            item.innerHTML =
+                figuras[Math.floor(Math.random() * figuras.length)];
 
-            document.body.appendChild(c);
+            item.style.position = "fixed";
+
+            item.style.left = Math.random() * 100 + "vw";
+
+            item.style.top = "-40px";
+
+            item.style.fontSize =
+                (20 + Math.random() * 15) + "px";
+
+            item.style.transition =
+                "transform 3s linear";
+
+            document.body.appendChild(item);
 
             requestAnimationFrame(() => {
-                c.style.transform =
-                    `translateY(${window.innerHeight + 100}px) rotate(720deg)`;
+
+                item.style.transform =
+                    `translateY(${window.innerHeight + 120}px) rotate(720deg)`;
+
             });
 
             setTimeout(() => {
 
-                c.remove();
+                item.remove();
 
             }, 3200);
 
-        }, i * 25);
+        }, i * 20);
 
     }
 
