@@ -5,30 +5,43 @@
 }
 
 body{
+
+    background:linear-gradient(180deg,#ffd6e8,#fff7fb);
+
     font-family:Georgia,serif;
-    background:linear-gradient(180deg,#ffd7e8,#fff7fb);
+
     min-height:100vh;
+
     overflow-x:hidden;
+
     overflow-y:auto;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+
 }
 
-/*==========================
-INTRO
-==========================*/
+/*=====================*/
+/* INTRO */
+/*=====================*/
 
 #intro{
+
     position:fixed;
+
     inset:0;
-    background:linear-gradient(180deg,#ffd7e8,#fff7fb);
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
+
+    background:linear-gradient(#ffd6e8,#fff7fb);
+
     z-index:9999;
+
     transition:1s;
+
 }
 
 #sobre{
@@ -37,13 +50,55 @@ INTRO
 
     width:280px;
 
-    height:210px;
+    height:190px;
 
     cursor:pointer;
 
 }
 
-.base{
+/* Carta */
+
+.carta{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:55px;
+
+    transform:translateX(-50%);
+
+    width:210px;
+
+    height:130px;
+
+    background:white;
+
+    border-radius:12px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+
+    z-index:1;
+
+}
+
+.carta h3{
+
+    color:#ff4f93;
+
+    font-size:34px;
+
+}
+
+/* Parte trasera */
+
+.sobre-atras{
 
     position:absolute;
 
@@ -51,98 +106,95 @@ INTRO
 
     width:100%;
 
-    height:140px;
+    height:135px;
 
-    background:#f57cb1;
+    background:#ef7aa8;
 
-    border-radius:0 0 25px 25px;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.18);
+    border-radius:0 0 20px 20px;
 
 }
 
-.tapa{
+/* Frente */
+
+.sobre-frente{
 
     position:absolute;
 
+    bottom:0;
+
     width:0;
+
     height:0;
 
     border-left:140px solid transparent;
+
     border-right:140px solid transparent;
-    border-top:105px solid #eb5d98;
+
+    border-bottom:95px solid #ff8fbd;
+
+    z-index:2;
+
+}
+
+/* Tapa */
+
+.sobre-tapa{
+
+    position:absolute;
 
     top:0;
+
+    width:0;
+
+    height:0;
+
+    border-left:140px solid transparent;
+
+    border-right:140px solid transparent;
+
+    border-top:95px solid #e95c97;
 
     transform-origin:top;
 
     transition:.8s;
 
-    z-index:3;
+    z-index:4;
 
 }
 
-.cartaIntro{
+/* Sello */
+
+.sello{
 
     position:absolute;
 
     left:50%;
 
-    top:45px;
-
-    transform:translateX(-50%);
-
-    width:210px;
-
-    height:115px;
-
-    background:white;
-
-    border-radius:12px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    z-index:1;
-
-    box-shadow:0 8px 20px rgba(0,0,0,.12);
-
-}
-
-.corazon{
-
-    position:absolute;
-
-    left:50%;
-
-    top:100px;
+    top:95px;
 
     transform:translate(-50%,-50%);
 
-    font-size:45px;
+    font-size:42px;
 
     z-index:5;
 
-    animation:latido 1.6s infinite;
+    animation:latido 1.5s infinite;
 
 }
 
 .textoIntro{
 
-    margin-top:35px;
-
-    color:#ff4f93;
+    margin-top:40px;
 
     font-size:28px;
 
-    animation:parpadeo 1.5s infinite;
+    color:#ff70a8;
+
+    animation:parpadeo 1.6s infinite;
 
 }
 
-/*==========================
-TARJETAS
-==========================*/
+/*=====================*/
 
 .hidden{
 
@@ -153,39 +205,37 @@ TARJETAS
 .card,
 #final{
 
-    width:95%;
+    width:94%;
 
     max-width:430px;
 
+    margin:25px auto;
+
     background:white;
+
+    border-radius:28px;
 
     padding:25px;
 
-    border-radius:30px;
-
-    margin:25px auto;
-
     text-align:center;
 
-    box-shadow:0 15px 35px rgba(0,0,0,.15);
-
-    animation:aparecer .8s;
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
 
 }
 
-/*==========================
-TEXTOS
-==========================*/
+/*=====================*/
 
 h1{
 
     color:#ff4f93;
 
-    font-size:52px;
+    font-size:48px;
 
-    line-height:1.1;
+    line-height:1.15;
 
     margin-bottom:18px;
+
+    animation:brillo 2s infinite;
 
 }
 
@@ -193,53 +243,51 @@ h2{
 
     color:#ff4f93;
 
-    font-size:42px;
+    font-size:36px;
 
     line-height:1.15;
 
     margin-bottom:18px;
 
+    animation:brillo 2s infinite;
+
 }
 
 p{
 
-    font-size:22px;
+    font-size:20px;
 
     line-height:1.35;
 
-    margin:12px 0;
+    margin:10px 0;
 
 }
 
 .nosvemos{
 
-    font-size:34px;
+    font-size:28px;
 
-    margin-top:20px;
+    margin-top:15px;
 
 }
 
-/*==========================
-OSITOS
-==========================*/
+/*=====================*/
 
 .ositos{
 
-    width:240px;
-
-    max-width:90%;
-
-    border-radius:18px;
+    width:220px;
 
     display:block;
 
-    margin:18px auto;
+    margin:20px auto;
+
+    border-radius:18px;
+
+    animation:respirar 2.5s ease-in-out infinite;
 
 }
 
-/*==========================
-BOTONES
-==========================*/
+/*=====================*/
 
 .buttons{
 
@@ -247,9 +295,7 @@ BOTONES
 
     justify-content:center;
 
-    align-items:center;
-
-    gap:22px;
+    gap:18px;
 
     margin-top:25px;
 
@@ -257,15 +303,17 @@ BOTONES
 
 button{
 
-    width:150px;
+    width:145px;
 
-    height:70px;
+    height:65px;
 
     border:none;
 
     border-radius:18px;
 
-    font-size:30px;
+    font-size:24px;
+
+    font-family:"Trebuchet MS",Verdana,sans-serif;
 
     color:white;
 
@@ -275,7 +323,9 @@ button{
 
 #yes{
 
-    background:#35c768;
+    background:#37c86a;
+
+    animation:latidoBoton 1.8s infinite;
 
 }
 
@@ -285,13 +335,11 @@ button{
 
 }
 
-/*==========================
-GALERIA
-==========================*/
+/*=====================*/
 
 .galeria{
 
-    margin-top:20px;
+    margin-top:18px;
 
 }
 
@@ -299,23 +347,19 @@ GALERIA
 
     width:100%;
 
-    max-width:340px;
-
-    border-radius:20px;
+    max-width:330px;
 
     display:block;
 
     margin:auto;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.18);
+    border-radius:20px;
 
-    transition:.5s;
+    transition:opacity .7s, transform .7s;
 
 }
 
-/*==========================
-CORAZONES
-==========================*/
+/*=====================*/
 
 #hearts{
 
@@ -335,21 +379,13 @@ CORAZONES
 
     top:-40px;
 
-    animation:caer linear forwards;
-
 }
 
-/*==========================
-ANIMACIONES
-==========================*/
+/*=====================*/
+/* ANIMACIONES */
+/*=====================*/
 
 @keyframes latido{
-
-0%,100%{
-
-transform:translate(-50%,-50%) scale(1);
-
-}
 
 50%{
 
@@ -359,47 +395,41 @@ transform:translate(-50%,-50%) scale(1.12);
 
 }
 
+@keyframes latidoBoton{
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+}
+
+@keyframes respirar{
+
+50%{
+
+transform:scale(1.05);
+
+}
+
+}
+
+@keyframes brillo{
+
+50%{
+
+text-shadow:0 0 18px #ffb5d7;
+
+}
+
+}
+
 @keyframes parpadeo{
 
 50%{
 
-opacity:.45;
-
-}
-
-}
-
-@keyframes aparecer{
-
-from{
-
-opacity:0;
-
-transform:translateY(30px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-@keyframes caer{
-
-from{
-
-transform:translateY(-50px);
-
-}
-
-to{
-
-transform:translateY(110vh) rotate(360deg);
+opacity:.4;
 
 }
 
