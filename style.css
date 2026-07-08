@@ -6,7 +6,7 @@
 
 body{
     font-family:Georgia,serif;
-    background:linear-gradient(180deg,#ffd9e8,#fff0f6);
+    background:linear-gradient(180deg,#ffd9e8,#fff4f8);
     min-height:100vh;
     display:flex;
     justify-content:center;
@@ -19,8 +19,8 @@ body{
 #hearts{
     position:fixed;
     inset:0;
-    pointer-events:none;
     overflow:hidden;
+    pointer-events:none;
     z-index:0;
 }
 
@@ -28,27 +28,27 @@ body{
 #final{
     position:relative;
     z-index:2;
-    background:#ffffffee;
-    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(8px);
     width:90%;
     max-width:390px;
+    border-radius:28px;
     padding:30px;
-    border-radius:30px;
-    box-shadow:0 15px 40px rgba(0,0,0,.15);
     text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
 }
 
 .hidden{
     display:none;
 }
 
-/*========== TITULOS ==========*/
+/* TITULOS */
 
 h1{
     color:#ff4f93;
     font-size:2rem;
     line-height:1.25;
-    margin-bottom:20px;
+    margin-bottom:18px;
     animation:brillo 2.5s infinite;
 }
 
@@ -60,24 +60,24 @@ h2{
 }
 
 p{
-    font-size:19px;
+    font-size:18px;
+    color:#444;
     line-height:1.45;
     margin:12px 0;
-    color:#444;
 }
 
-/*========== OSITOS ==========*/
+/* OSITOS */
 
 .ositos{
     width:220px;
     max-width:90%;
-    display:block;
+    border-radius:18px;
     margin:20px auto;
-    border-radius:20px;
+    display:block;
     animation:respirar 3s infinite;
 }
 
-/*========== BOTONES ==========*/
+/* BOTONES */
 
 .buttons{
     display:flex;
@@ -89,11 +89,11 @@ p{
 button{
     border:none;
     border-radius:18px;
-    padding:15px 28px;
-    font-size:22px;
-    cursor:pointer;
+    padding:15px 30px;
     color:white;
-    transition:.25s;
+    cursor:pointer;
+    font-size:22px;
+    transition:.3s;
 }
 
 button:hover{
@@ -101,7 +101,7 @@ button:hover{
 }
 
 #yes{
-    background:#38c76b;
+    background:#37c96b;
     animation:latido 1.5s infinite;
 }
 
@@ -109,10 +109,10 @@ button:hover{
     background:#ff4f93;
 }
 
-/*========== GALERIA ==========*/
+/* GALERIA */
 
 .galeria{
-    margin-top:20px;
+    margin-top:25px;
 }
 
 #foto{
@@ -120,20 +120,20 @@ button:hover{
     max-width:280px;
     border-radius:20px;
     box-shadow:0 10px 25px rgba(0,0,0,.2);
-    transition:.5s;
+    transition:opacity .5s,transform .5s;
 }
 
-/*========== CORAZONES ==========*/
+/* ELEMENTOS FLOTANTES */
 
 .heart{
     position:fixed;
-    top:-40px;
+    top:-50px;
     pointer-events:none;
-    z-index:1;
     animation:caer linear forwards;
+    z-index:1;
 }
 
-/*========== ANIMACIONES ==========*/
+/* ANIMACIONES */
 
 @keyframes latido{
 
@@ -162,11 +162,11 @@ button:hover{
 @keyframes brillo{
 
     0%,100%{
-        text-shadow:0 0 6px #ffb5d2;
+        text-shadow:0 0 8px #ffb7d3;
     }
 
     50%{
-        text-shadow:0 0 18px #ff4f93;
+        text-shadow:0 0 20px #ff4f93;
     }
 
 }
@@ -174,39 +174,31 @@ button:hover{
 @keyframes aparecer{
 
     from{
-
         opacity:0;
         transform:translateY(40px) scale(.95);
-
     }
 
     to{
-
         opacity:1;
         transform:translateY(0) scale(1);
-
     }
 
 }
 
 #final{
-
     animation:aparecer .8s ease;
-
 }
 
 @keyframes caer{
 
     from{
-
-        transform:translateY(-50px) rotate(0deg);
-
+        transform:translateY(-60px) rotate(0deg);
+        opacity:1;
     }
 
     to{
-
         transform:translateY(110vh) rotate(360deg);
-
+        opacity:0;
     }
 
 }
