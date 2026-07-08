@@ -6,27 +6,29 @@
 
 body{
 
-    background:linear-gradient(180deg,#ffd6e8,#fff7fb);
+    background:linear-gradient(180deg,#ffd8e8,#fff8fb);
 
     font-family:Georgia,serif;
-
-    min-height:100vh;
 
     overflow-x:hidden;
 
     overflow-y:auto;
 
+    min-height:100vh;
+
 }
 
-/*=====================*/
+/*========================*/
 /* INTRO */
-/*=====================*/
+/*========================*/
 
 #intro{
 
     position:fixed;
 
     inset:0;
+
+    background:linear-gradient(#ffd8e8,#fff8fb);
 
     display:flex;
 
@@ -36,45 +38,75 @@ body{
 
     align-items:center;
 
-    background:linear-gradient(#ffd6e8,#fff7fb);
-
     z-index:9999;
 
     transition:1s;
 
 }
 
-#sobre{
+/*========================*/
+/* CIERRE */
+/*========================*/
+
+#zipper{
 
     position:relative;
 
-    width:280px;
+    width:90px;
 
-    height:190px;
-
-    cursor:pointer;
+    height:360px;
 
 }
 
-/* Carta */
-
-.carta{
+.dientes{
 
     position:absolute;
 
     left:50%;
 
-    bottom:55px;
+    transform:translateX(-50%);
+
+    width:12px;
+
+    height:320px;
+
+    background:repeating-linear-gradient(
+
+        to bottom,
+
+        #d8d8d8 0px,
+
+        #d8d8d8 7px,
+
+        #9a9a9a 7px,
+
+        #9a9a9a 14px
+
+    );
+
+    border-radius:20px;
+
+    box-shadow:0 0 10px rgba(0,0,0,.15);
+
+}
+
+#slider{
+
+    position:absolute;
+
+    left:50%;
+
+    top:130px;
 
     transform:translateX(-50%);
 
-    width:210px;
+    width:60px;
 
-    height:130px;
+    height:70px;
 
-    background:white;
+    background:#ff5b9d;
 
-    border-radius:12px;
+    border-radius:18px;
 
     display:flex;
 
@@ -82,119 +114,49 @@ body{
 
     align-items:center;
 
-    box-shadow:0 10px 20px rgba(0,0,0,.15);
-
-    z-index:1;
-
-}
-
-.carta h3{
-
-    color:#ff4f93;
+    color:white;
 
     font-size:34px;
 
-}
+    cursor:pointer;
 
-/* Parte trasera */
+    box-shadow:0 10px 20px rgba(0,0,0,.25);
 
-.sobre-atras{
-
-    position:absolute;
-
-    bottom:0;
-
-    width:100%;
-
-    height:135px;
-
-    background:#ef7aa8;
-
-    border-radius:0 0 20px 20px;
+    transition:1.2s;
 
 }
 
-/* Frente */
+#slider::after{
 
-.sobre-frente{
-
-    position:absolute;
-
-    bottom:0;
-
-    width:0;
-
-    height:0;
-
-    border-left:140px solid transparent;
-
-    border-right:140px solid transparent;
-
-    border-bottom:95px solid #ff8fbd;
-
-    z-index:2;
-
-}
-
-/* Tapa */
-
-.sobre-tapa{
+    content:"";
 
     position:absolute;
 
-    top:0;
+    bottom:-18px;
 
-    width:0;
+    width:16px;
 
-    height:0;
+    height:25px;
 
-    border-left:140px solid transparent;
+    border-radius:12px;
 
-    border-right:140px solid transparent;
-
-    border-top:95px solid #e95c97;
-
-    transform-origin:top;
-
-    transition:.8s;
-
-    z-index:4;
-
-}
-
-/* Sello */
-
-.sello{
-
-    position:absolute;
-
-    left:50%;
-
-    top:95px;
-
-    transform:translate(-50%,-50%);
-
-    font-size:42px;
-
-    z-index:5;
-
-    animation:latido 1.5s infinite;
+    background:#d8d8d8;
 
 }
 
 .textoIntro{
 
-    margin-top:40px;
+    margin-top:45px;
 
-    font-size:28px;
+    font-size:30px;
 
-    color:#ff70a8;
+    color:#ff70aa;
 
     animation:parpadeo 1.6s infinite;
 
 }
 
-/*=====================*/
+/*========================*/
 
 .hidden{
 
@@ -209,11 +171,11 @@ body{
 
     max-width:430px;
 
-    margin:25px auto;
-
     background:white;
 
-    border-radius:28px;
+    margin:30px auto;
+
+    border-radius:30px;
 
     padding:25px;
 
@@ -223,13 +185,13 @@ body{
 
 }
 
-/*=====================*/
+/*========================*/
 
 h1{
 
     color:#ff4f93;
 
-    font-size:48px;
+    font-size:46px;
 
     line-height:1.15;
 
@@ -243,7 +205,7 @@ h2{
 
     color:#ff4f93;
 
-    font-size:36px;
+    font-size:34px;
 
     line-height:1.15;
 
@@ -267,11 +229,11 @@ p{
 
     font-size:28px;
 
-    margin-top:15px;
+    margin-top:18px;
 
 }
 
-/*=====================*/
+/*========================*/
 
 .ositos{
 
@@ -283,11 +245,11 @@ p{
 
     border-radius:18px;
 
-    animation:respirar 2.5s ease-in-out infinite;
+    animation:respirar 2.4s ease-in-out infinite;
 
 }
 
-/*=====================*/
+/*========================*/
 
 .buttons{
 
@@ -297,7 +259,7 @@ p{
 
     gap:18px;
 
-    margin-top:25px;
+    margin-top:28px;
 
 }
 
@@ -305,27 +267,25 @@ button{
 
     width:145px;
 
-    height:65px;
+    height:66px;
 
     border:none;
 
     border-radius:18px;
 
-    font-size:24px;
-
-    font-family:"Trebuchet MS",Verdana,sans-serif;
-
     color:white;
 
-    cursor:pointer;
+    font-size:24px;
+
+    font-family:Trebuchet MS,Verdana,sans-serif;
 
 }
 
 #yes{
 
-    background:#37c86a;
+    background:#34c759;
 
-    animation:latidoBoton 1.8s infinite;
+    animation:latido 1.7s infinite;
 
 }
 
@@ -335,7 +295,7 @@ button{
 
 }
 
-/*=====================*/
+/*========================*/
 
 .galeria{
 
@@ -355,11 +315,11 @@ button{
 
     border-radius:20px;
 
-    transition:opacity .7s, transform .7s;
+    transition:.7s;
 
 }
 
-/*=====================*/
+/*========================*/
 
 #hearts{
 
@@ -367,9 +327,9 @@ button{
 
     inset:0;
 
-    pointer-events:none;
-
     overflow:hidden;
+
+    pointer-events:none;
 
 }
 
@@ -381,29 +341,7 @@ button{
 
 }
 
-/*=====================*/
-/* ANIMACIONES */
-/*=====================*/
-
-@keyframes latido{
-
-50%{
-
-transform:translate(-50%,-50%) scale(1.12);
-
-}
-
-}
-
-@keyframes latidoBoton{
-
-50%{
-
-transform:scale(1.08);
-
-}
-
-}
+/*========================*/
 
 @keyframes respirar{
 
@@ -415,11 +353,21 @@ transform:scale(1.05);
 
 }
 
+@keyframes latido{
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+}
+
 @keyframes brillo{
 
 50%{
 
-text-shadow:0 0 18px #ffb5d7;
+text-shadow:0 0 18px #ffc0dd;
 
 }
 
@@ -429,7 +377,23 @@ text-shadow:0 0 18px #ffb5d7;
 
 50%{
 
-opacity:.4;
+opacity:.45;
+
+}
+
+}
+
+@keyframes caer{
+
+from{
+
+transform:translateY(-60px);
+
+}
+
+to{
+
+transform:translateY(110vh) rotate(360deg);
 
 }
 
