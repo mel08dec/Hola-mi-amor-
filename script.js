@@ -1,3 +1,8 @@
+const intro = document.getElementById("intro");
+const sobre = document.getElementById("sobre");
+
+const musica = document.getElementById("musica");
+
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
 
@@ -5,73 +10,102 @@ const inicio = document.getElementById("inicio");
 const final = document.getElementById("final");
 const hearts = document.getElementById("hearts");
 
-// =========================
-// BOTÓN "NO"
-// =========================
+// ======================
+// ABRIR SOBRE
+// ======================
 
-const mensajes = [
-    "No 😐",
-    "Pucú? 😑",
-    "No?🫤",
-    "Amor? 🫩",
-    "Un si? 🥺",
-    "Dale un si 😭"
-];
+sobre.addEventListener("click",()=>{
 
-let intento = 0;
+    musica.volume=.35;
+    musica.play();
 
-function moverBoton() {
-
-    const margen = 20;
-
-    const x = Math.random() * (window.innerWidth - no.offsetWidth - margen);
-    const y = Math.random() * (window.innerHeight - no.offsetHeight - margen);
-
-    no.style.position = "fixed";
-    no.style.left = x + "px";
-    no.style.top = y + "px";
-
-    no.textContent = mensajes[intento];
-
-    intento = (intento + 1) % mensajes.length;
-
-}
-
-no.addEventListener("mouseover", moverBoton);
-
-no.addEventListener("touchstart", function(e){
-
-    e.preventDefault();
-
-    moverBoton();
-
-});
-
-// =========================
-// BOTÓN "SÍ"
-// =========================
-
-yes.addEventListener("click", ()=>{
-
-    inicio.style.transition=".5s";
-    inicio.style.transform="scale(.9)";
-    inicio.style.opacity="0";
+    document.querySelector(".tapa").style.transform="rotateX(180deg)";
 
     setTimeout(()=>{
 
-        inicio.style.display="none";
+        intro.style.opacity="0";
 
-        final.classList.remove("hidden");
+        setTimeout(()=>{
 
-        lanzarConfeti();
+            intro.style.display="none";
 
-    },500);
+            inicio.classList.remove("hidden");
+
+        },800);
+
+    },600);
 
 });
 
-// =========================
-// GALERÍA
-// =========================
+// ======================
+// BOTON NO
+// ======================
+
+const mensajes=[
+
+"No 😐",
+"Pucú? 😑",
+"No? 🫤",
+"Amor? 🥺",
+"Un sí? 🥹",
+"Por favor ❤️"
+
+];
+
+let intento=0;
+
+function moverBoton(){
+
+const margen=20;
+
+const x=Math.random()*(window.innerWidth-no.offsetWidth-margen);
+
+const y=Math.random()*(window.innerHeight-no.offsetHeight-margen);
+
+no.style.position="fixed";
+no.style.left=x+"px";
+no.style.top=y+"px";
+
+no.textContent=mensajes[intento];
+
+intento=(intento+1)%mensajes.length;
+
+}
+
+no.addEventListener("mouseover",moverBoton);
+
+no.addEventListener("touchstart",(e)=>{
+
+e.preventDefault();
+
+moverBoton();
+
+});
+
+// ======================
+// BOTON SI
+// ======================
+
+yes.addEventListener("click",()=>{
+
+inicio.style.opacity="0";
+inicio.style.transform="scale(.9)";
+
+setTimeout(()=>{
+
+inicio.style.display="none";
+
+final.classList.remove("hidden");
+
+confeti();
+
+},400);
+
+});
+
+// ======================
+// GALERIA
+// ======================
 
 const fotos=[
 
@@ -87,123 +121,117 @@ let indice=0;
 
 setInterval(()=>{
 
-    const foto=document.getElementById("foto");
+const foto=document.getElementById("foto");
 
-    if(!foto) return;
+if(!foto) return;
 
-    if(final.classList.contains("hidden")) return;
+if(final.classList.contains("hidden")) return;
 
-    foto.style.opacity="0";
-    foto.style.transform="scale(.95)";
+foto.style.opacity="0";
+foto.style.transform="scale(.95)";
 
-    setTimeout(()=>{
+setTimeout(()=>{
 
-        indice++;
+indice=(indice+1)%fotos.length;
 
-        if(indice>=fotos.length){
+foto.src=fotos[indice];
 
-            indice=0;
+foto.style.opacity="1";
+foto.style.transform="scale(1)";
 
-        }
-
-        foto.src=fotos[indice];
-
-        foto.style.opacity="1";
-        foto.style.transform="scale(1)";
-
-    },250);
+},300);
 
 },3000);
 
-// =========================
+// ======================
 // CORAZONES
-// =========================
+// ======================
 
 function crearFigura(){
 
-    const heart=document.createElement("div");
+const heart=document.createElement("div");
 
-    heart.className="heart";
+heart.className="heart";
 
-    const figuras=[
-        "♥️",
-        "✨", 
-        "✨",
-        "♥️",
-    ];
+const figuras=[
 
-    heart.innerHTML=figuras[
-        Math.floor(Math.random()*figuras.length)
-    ];
+"♥️",
+"✨",
+"♥️",
+"✨"
 
-    heart.style.left=Math.random()*100+"vw";
+];
 
-    heart.style.fontSize=(18+Math.random()*18)+"px";
+heart.innerHTML=figuras[Math.floor(Math.random()*figuras.length)];
 
-    heart.style.animationDuration=(5+Math.random()*4)+"s";
+heart.style.left=Math.random()*100+"vw";
 
-    hearts.appendChild(heart);
+heart.style.fontSize=(18+Math.random()*18)+"px";
 
-    setTimeout(()=>{
+heart.style.animationDuration=(5+Math.random()*3)+"s";
 
-        heart.remove();
+hearts.appendChild(heart);
 
-    },9000);
+setTimeout(()=>{
+
+heart.remove();
+
+},8000);
 
 }
 
 setInterval(crearFigura,350);
 
-// =========================
+// ======================
 // CONFETI
-// =========================
+// ======================
 
-function lanzarConfeti(){
+function confeti(){
 
-    for(let i=0;i<150;i++){
+for(let i=0;i<120;i++){
 
-        setTimeout(()=>{
+setTimeout(()=>{
 
-            const item=document.createElement("div");
+const c=document.createElement("div");
 
-            const figuras=[
-                "♥️",
-                "✨",
-                "🎉",
-                "🎊",
-                "🎈",
-                "✨",
-                "🎉"
-            ];
+const figuras=[
 
-            item.innerHTML=figuras[
-                Math.floor(Math.random()*figuras.length)
-            ];
+"❤️",
+"✨",
+"🎉",
+"🎊",
+"🎈"
 
-            item.style.position="fixed";
-            item.style.left=Math.random()*100+"vw";
-            item.style.top="-30px";
-            item.style.fontSize=(18+Math.random()*16)+"px";
-            item.style.pointerEvents="none";
-            item.style.transition="transform 3s linear";
+];
 
-            document.body.appendChild(item);
+c.innerHTML=figuras[Math.floor(Math.random()*figuras.length)];
 
-            requestAnimationFrame(()=>{
+c.style.position="fixed";
 
-                item.style.transform=
-                `translateY(${window.innerHeight+100}px) rotate(720deg)`;
+c.style.left=Math.random()*100+"vw";
 
-            });
+c.style.top="-20px";
 
-            setTimeout(()=>{
+c.style.fontSize=(18+Math.random()*18)+"px";
 
-                item.remove();
+c.style.transition="3s linear";
 
-            },3200);
+document.body.appendChild(c);
 
-        },i*15);
+requestAnimationFrame(()=>{
 
-    }
+c.style.transform=`translateY(${window.innerHeight+100}px) rotate(720deg)`;
+
+});
+
+setTimeout(()=>{
+
+c.remove();
+
+},3200);
+
+},i*20);
+
+}
 
 }
