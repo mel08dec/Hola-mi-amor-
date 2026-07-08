@@ -5,22 +5,22 @@ const inicio = document.getElementById("inicio");
 const final = document.getElementById("final");
 const hearts = document.getElementById("hearts");
 
-// =====================
-// BOTÓN NO
-// =====================
+// =========================
+// BOTÓN "NO"
+// =========================
 
-const mensajesNo = [
+const mensajes = [
     "No 😐",
-    "No 😑",
-    "No 🫤",
-    "No 🫩",
-    "No 🥺",
-    "No 😭"
+    "Pucú? 😑",
+    "No?🫤",
+    "Amor? 🫩",
+    "Un si? 🥺",
+    "Dale un si 😭"
 ];
 
 let intento = 0;
 
-function mover() {
+function moverBoton() {
 
     const margen = 20;
 
@@ -31,164 +31,173 @@ function mover() {
     no.style.left = x + "px";
     no.style.top = y + "px";
 
-    no.textContent = mensajesNo[intento];
+    no.textContent = mensajes[intento];
 
-    intento = (intento + 1) % mensajesNo.length;
+    intento = (intento + 1) % mensajes.length;
+
 }
 
-no.addEventListener("mouseover", mover);
+no.addEventListener("mouseover", moverBoton);
 
-no.addEventListener("touchstart", function (e) {
+no.addEventListener("touchstart", function(e){
+
     e.preventDefault();
-    mover();
+
+    moverBoton();
+
 });
 
-// =====================
-// BOTÓN SÍ
-// =====================
+// =========================
+// BOTÓN "SÍ"
+// =========================
 
-yes.addEventListener("click", () => {
+yes.addEventListener("click", ()=>{
 
-    inicio.style.transform = "scale(.9)";
-    inicio.style.opacity = "0";
+    inicio.style.transition=".5s";
+    inicio.style.transform="scale(.9)";
+    inicio.style.opacity="0";
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
-        inicio.style.display = "none";
+        inicio.style.display="none";
 
         final.classList.remove("hidden");
 
-        crearConfeti();
+        lanzarConfeti();
 
-    }, 400);
+    },500);
 
 });
 
-// =====================
+// =========================
 // GALERÍA
-// =====================
+// =========================
 
-const fotos = [
-    "img/Foto 1.JPG",
-    "img/Foto 2.JPG",
-    "img/Foto 3.JPG",
-    "img/Foto 4.jpg",
-    "img/Foto 5.jpg"
+const fotos=[
+
+"img/Foto 1.JPG",
+"img/Foto 2.JPG",
+"img/Foto 3.JPG",
+"img/Foto 4.jpg",
+"img/Foto 5.jpg"
+
 ];
 
-let indice = 0;
+let indice=0;
 
-setInterval(() => {
+setInterval(()=>{
 
-    const foto = document.getElementById("foto");
+    const foto=document.getElementById("foto");
 
-    if (!foto || final.classList.contains("hidden")) return;
+    if(!foto) return;
 
-    foto.style.opacity = "0";
-    foto.style.transform = "scale(.95)";
+    if(final.classList.contains("hidden")) return;
 
-    setTimeout(() => {
+    foto.style.opacity="0";
+    foto.style.transform="scale(.95)";
 
-        indice = (indice + 1) % fotos.length;
+    setTimeout(()=>{
 
-        foto.src = fotos[indice];
+        indice++;
 
-        foto.style.opacity = "1";
-        foto.style.transform = "scale(1)";
+        if(indice>=fotos.length){
 
-    }, 250);
+            indice=0;
 
-}, 3000);
+        }
 
-// =====================
+        foto.src=fotos[indice];
+
+        foto.style.opacity="1";
+        foto.style.transform="scale(1)";
+
+    },250);
+
+},3000);
+
+// =========================
 // CORAZONES
-// =====================
+// =========================
 
-function crearCorazon() {
+function crearFigura(){
 
-    const heart = document.createElement("div");
+    const heart=document.createElement("div");
 
-    heart.className = "heart";
+    heart.className="heart";
 
-    const figuras = [
-        "❤️",
+    const figuras=[
+        "♥️",
         "✨",
-        "🌸"
     ];
 
-    heart.innerHTML =
-        figuras[Math.floor(Math.random() * figuras.length)];
+    heart.innerHTML=figuras[
+        Math.floor(Math.random()*figuras.length)
+    ];
 
-    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.left=Math.random()*100+"vw";
 
-    heart.style.fontSize =
-        (18 + Math.random() * 18) + "px";
+    heart.style.fontSize=(18+Math.random()*18)+"px";
 
-    heart.style.animationDuration =
-        (5 + Math.random() * 3) + "s";
+    heart.style.animationDuration=(5+Math.random()*4)+"s";
 
     hearts.appendChild(heart);
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
         heart.remove();
 
-    }, 8000);
+    },9000);
 
 }
 
-setInterval(crearCorazon, 350);
+setInterval(crearFigura,350);
 
-// =====================
+// =========================
 // CONFETI
-// =====================
+// =========================
 
-function crearConfeti() {
+function lanzarConfeti(){
 
-    for (let i = 0; i < 120; i++) {
+    for(let i=0;i<150;i++){
 
-        setTimeout(() => {
+        setTimeout(()=>{
 
-            const item = document.createElement("div");
+            const item=document.createElement("div");
 
-            const figuras = [
-                "❤️",
+            const figuras=[
+                "♥️",
                 "✨",
-                "🌸",
+                "🎉",
                 "💕"
             ];
 
-            item.innerHTML =
-                figuras[Math.floor(Math.random() * figuras.length)];
+            item.innerHTML=figuras[
+                Math.floor(Math.random()*figuras.length)
+            ];
 
-            item.style.position = "fixed";
-
-            item.style.left = Math.random() * 100 + "vw";
-
-            item.style.top = "-40px";
-
-            item.style.fontSize =
-                (20 + Math.random() * 15) + "px";
-
-            item.style.transition =
-                "transform 3s linear";
+            item.style.position="fixed";
+            item.style.left=Math.random()*100+"vw";
+            item.style.top="-30px";
+            item.style.fontSize=(18+Math.random()*16)+"px";
+            item.style.pointerEvents="none";
+            item.style.transition="transform 3s linear";
 
             document.body.appendChild(item);
 
-            requestAnimationFrame(() => {
+            requestAnimationFrame(()=>{
 
-                item.style.transform =
-                    `translateY(${window.innerHeight + 120}px) rotate(720deg)`;
+                item.style.transform=
+                `translateY(${window.innerHeight+100}px) rotate(720deg)`;
 
             });
 
-            setTimeout(() => {
+            setTimeout(()=>{
 
                 item.remove();
 
-            }, 3200);
+            },3200);
 
-        }, i * 20);
+        },i*15);
 
     }
 
