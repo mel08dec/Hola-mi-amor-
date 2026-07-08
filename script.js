@@ -60,7 +60,7 @@ const mensajes=[
 "Amor? 🫤",
 "Ey pequeña 🫩",
 "Po favo 🥺",
-"Daleee 😭"
+"Daleeee 😭"
 
 ];
 
