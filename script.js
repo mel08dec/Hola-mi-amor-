@@ -56,11 +56,11 @@ function abrir(){
 const mensajes=[
 
 "No 😐",
-"No 😑",
-"No 🫤",
-"No 🫩",
-"No 🥺",
-"No 😭"
+"No? 😑",
+"Amor? 🫤",
+"Ey pequeña 🫩",
+"Po favo 🥺",
+"Daleee 😭"
 
 ];
 
