@@ -127,7 +127,9 @@ function crearFigura(){
 
     const figuras=[
         "♥️",
+        "✨", 
         "✨",
+        "♥️",
     ];
 
     heart.innerHTML=figuras[
@@ -168,7 +170,10 @@ function lanzarConfeti(){
                 "♥️",
                 "✨",
                 "🎉",
-                "💕"
+                "🎊",
+                "🎈",
+                "✨",
+                "🎉"
             ];
 
             item.innerHTML=figuras[
