@@ -1,7 +1,5 @@
 const intro = document.getElementById("intro");
-const sobre = document.getElementById("sobre");
-const tapa = document.querySelector(".sobre-tapa");
-const carta = document.querySelector(".carta");
+const slider = document.getElementById("slider");
 
 const musica = document.getElementById("musica");
 
@@ -13,172 +11,187 @@ const no = document.getElementById("no");
 
 const hearts = document.getElementById("hearts");
 
-// ==========================
-// ABRIR SOBRE
-// ==========================
+// ===========================
+// ABRIR CIERRE
+// ===========================
 
-sobre.addEventListener("click", () => {
+slider.addEventListener("click", abrir);
 
-    musica.volume = 0.35;
-    musica.play().catch(() => {});
+slider.addEventListener("touchstart", function(e){
 
-    tapa.style.transform = "rotateX(180deg)";
-    carta.style.transform = "translateX(-50%) translateY(-55px)";
+    e.preventDefault();
 
-    setTimeout(() => {
-
-        intro.style.opacity = "0";
-
-        setTimeout(() => {
-
-            intro.style.display = "none";
-
-            inicio.classList.remove("hidden");
-
-        }, 700);
-
-    }, 1000);
+    abrir();
 
 });
 
-// ==========================
-// BOTÓN NO
-// ==========================
+function abrir(){
 
-const mensajes = [
-    "No 😐",
-    "No 😑",
-    "No 🫤",
-    "No 🫩",
-    "No 🥺",
-    "No 😭"
+    slider.style.top="285px";
+
+    musica.volume=.35;
+
+    musica.play().catch(()=>{});
+
+    setTimeout(()=>{
+
+        intro.style.opacity="0";
+
+        setTimeout(()=>{
+
+            intro.style.display="none";
+
+            inicio.classList.remove("hidden");
+
+        },700);
+
+    },1000);
+
+}
+
+// ===========================
+// BOTÓN NO
+// ===========================
+
+const mensajes=[
+
+"No 😐",
+"No 😑",
+"No 🫤",
+"No 🫩",
+"No 🥺",
+"No 😭"
+
 ];
 
-let intento = 0;
+let intento=0;
 
-function moverBoton() {
+function mover(){
 
-    const margen = 20;
+    const margen=20;
 
-    const x = Math.random() * (window.innerWidth - no.offsetWidth - margen);
-    const y = Math.random() * (window.innerHeight - no.offsetHeight - margen);
+    const x=Math.random()*(window.innerWidth-no.offsetWidth-margen);
 
-    no.style.position = "fixed";
-    no.style.left = x + "px";
-    no.style.top = y + "px";
+    const y=Math.random()*(window.innerHeight-no.offsetHeight-margen);
 
-    no.innerHTML = mensajes[intento];
+    no.style.position="fixed";
+    no.style.left=x+"px";
+    no.style.top=y+"px";
+
+    no.innerHTML=mensajes[intento];
 
     intento++;
 
-    if (intento >= mensajes.length) {
-        intento = 0;
+    if(intento>=mensajes.length){
+
+        intento=0;
+
     }
 
 }
 
-no.addEventListener("mouseover", moverBoton);
+no.addEventListener("mouseover",mover);
 
-no.addEventListener("touchstart", function(e){
+no.addEventListener("touchstart",function(e){
 
     e.preventDefault();
 
-    moverBoton();
+    mover();
 
 });
 
-// ==========================
+// ===========================
 // BOTÓN SÍ
-// ==========================
+// ===========================
 
-yes.addEventListener("click", () => {
+yes.addEventListener("click",()=>{
 
-    inicio.style.opacity = "0";
-    inicio.style.transform = "scale(.95)";
+    inicio.style.opacity="0";
+    inicio.style.transform="scale(.92)";
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
-        inicio.style.display = "none";
+        inicio.style.display="none";
 
         final.classList.remove("hidden");
 
         lanzarConfeti();
 
-    }, 450);
+    },450);
 
 });
 
-// ==========================
+// ===========================
 // GALERÍA
-// ==========================
+// ===========================
 
-const fotos = [
+const fotos=[
 
-    "img/Foto 1.JPG",
-    "img/Foto 2.JPG",
-    "img/Foto 3.JPG",
-    "img/Foto 4.jpg",
-    "img/Foto 5.jpg"
+"img/Foto 1.JPG",
+"img/Foto 2.JPG",
+"img/Foto 3.JPG",
+"img/Foto 4.jpg",
+"img/Foto 5.jpg"
 
 ];
 
-let indice = 0;
+let indice=0;
 
-function cambiarFoto() {
+function cambiarFoto(){
 
-    const foto = document.getElementById("foto");
+    const foto=document.getElementById("foto");
 
-    if (!foto) return;
+    if(!foto) return;
 
-    foto.style.opacity = "0";
+    foto.style.opacity="0";
 
-    foto.style.transform = "scale(.96)";
+    foto.style.transform="scale(.96)";
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
         indice++;
 
-        if (indice >= fotos.length) {
+        if(indice>=fotos.length){
 
-            indice = 0;
+            indice=0;
 
         }
 
-        foto.src = fotos[indice];
+        foto.src=fotos[indice];
 
-        foto.onload = () => {
+        foto.onload=()=>{
 
-            foto.style.opacity = "1";
+            foto.style.opacity="1";
 
-            foto.style.transform = "scale(1)";
+            foto.style.transform="scale(1)";
 
         };
 
-    }, 350);
+    },300);
 
 }
 
-setInterval(() => {
+setInterval(()=>{
 
-    if (!final.classList.contains("hidden")) {
+    if(!final.classList.contains("hidden")){
 
         cambiarFoto();
 
     }
 
-}, 3500);
+},3500);
 
-// ==========================
+// ===========================
 // CORAZONES
-// ==========================
+// ===========================
 
-function crearFigura(){
+function crearCorazon(){
 
-    const heart = document.createElement("div");
+    const heart=document.createElement("div");
 
-    heart.className = "heart";
+    heart.className="heart";
 
-    const figuras = [
+    const figuras=[
 
         "❤️",
         "♥️",
@@ -187,31 +200,31 @@ function crearFigura(){
 
     ];
 
-    heart.innerHTML = figuras[
-        Math.floor(Math.random() * figuras.length)
+    heart.innerHTML=figuras[
+        Math.floor(Math.random()*figuras.length)
     ];
 
-    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.left=Math.random()*100+"vw";
 
-    heart.style.fontSize = (18 + Math.random() * 14) + "px";
+    heart.style.fontSize=(18+Math.random()*16)+"px";
 
-    heart.style.animation = `caer ${5 + Math.random()*3}s linear forwards`;
+    heart.style.animation=`caer ${5+Math.random()*3}s linear forwards`;
 
     hearts.appendChild(heart);
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
         heart.remove();
 
-    }, 8000);
+    },8000);
 
 }
 
-setInterval(crearFigura, 450);
+setInterval(crearCorazon,400);
 
-// ==========================
+// ===========================
 // CONFETI
-// ==========================
+// ===========================
 
 function lanzarConfeti(){
 
@@ -226,7 +239,8 @@ function lanzarConfeti(){
                 "❤️",
                 "♥️",
                 "✨",
-                "🎉"
+                "🎉",
+                "🎊"
 
             ];
 
@@ -238,7 +252,7 @@ function lanzarConfeti(){
 
             item.style.left=Math.random()*100+"vw";
 
-            item.style.top="-30px";
+            item.style.top="-40px";
 
             item.style.fontSize=(18+Math.random()*16)+"px";
 
